@@ -49,30 +49,30 @@
           let data = new FormData()
           data.append('multfile', fileData)
           data.append('operaType', this.uploadType)
-          this.$store.dispatch('UPLOAD_HEAD', data)
-            .then(res => {
-              console.log(res)
-              this.file = '';
-              let data = res.data.data;
-              this.$emit("upload", data );
-              this.$message({
-                type: "success",
-                message: "上传成功！"
-              })
-            }).catch(err => {
-            console.log(err)
-            if(err.data.msg){
-              this.$message({
-                type: "error",
-                message: err.data.msg
-              })
-            }else {
-              this.$message({
-                type: "error",
-                message: "上传失败"
-              })
-            }
-          })
+          // this.$store.dispatch('UPLOAD_HEAD', data)
+          //   .then(res => {
+          //     console.log(res)
+          //     this.file = '';
+          //     let data = res.data.data;
+          //     this.$emit("upload", data );
+          //     this.$message({
+          //       type: "success",
+          //       message: "上传成功！"
+          //     })
+          //   }).catch(err => {
+          //   console.log(err)
+          //   if(err.data.msg){
+          //     this.$message({
+          //       type: "error",
+          //       message: err.data.msg
+          //     })
+          //   }else {
+          //     this.$message({
+          //       type: "error",
+          //       message: "上传失败"
+          //     })
+          //   }
+          // })
         }
       }
     }
