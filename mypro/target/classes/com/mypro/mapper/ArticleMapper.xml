@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mypro.mapper.ArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.mypro.model.Article" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="article_name" property="article_name" jdbcType="VARCHAR" />
+    <result column="article_img" property="article_img" jdbcType="VARCHAR" />
+    <result column="comment_id" property="comment_id" jdbcType="INTEGER" />
+    <result column="brow_num" property="brow_num" jdbcType="INTEGER" />
+    <result column="author_id" property="author_id" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="publish_time" property="publish_time" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="update_time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.mypro.model.Article" extends="BaseResultMap" >
+    <result column="article_content" property="article_content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, article_name, article_img, comment_id, brow_num, author_id, status, publish_time, 
+    create_time, update_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    article_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from article
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from article
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mypro.model.Article" >
+    insert into article (id, article_name, article_img, 
+      comment_id, brow_num, author_id, 
+      status, publish_time, create_time, 
+      update_time, article_content)
+    values (#{id,jdbcType=INTEGER}, #{article_name,jdbcType=VARCHAR}, #{article_img,jdbcType=VARCHAR}, 
+      #{comment_id,jdbcType=INTEGER}, #{brow_num,jdbcType=INTEGER}, #{author_id,jdbcType=INTEGER}, 
+      #{status,jdbcType=TINYINT}, #{publish_time,jdbcType=TIMESTAMP}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{article_content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mypro.model.Article" >
+    insert into article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="article_name != null" >
+        article_name,
+      </if>
+      <if test="article_img != null" >
+        article_img,
+      </if>
+      <if test="comment_id != null" >
+        comment_id,
+      </if>
+      <if test="brow_num != null" >
+        brow_num,
+      </if>
+      <if test="author_id != null" >
+        author_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="publish_time != null" >
+        publish_time,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="update_time != null" >
+        update_time,
+      </if>
+      <if test="article_content != null" >
+        article_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="article_name != null" >
+        #{article_name,jdbcType=VARCHAR},
+      </if>
+      <if test="article_img != null" >
+        #{article_img,jdbcType=VARCHAR},
+      </if>
+      <if test="comment_id != null" >
+        #{comment_id,jdbcType=INTEGER},
+      </if>
+      <if test="brow_num != null" >
+        #{brow_num,jdbcType=INTEGER},
+      </if>
+      <if test="author_id != null" >
+        #{author_id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="publish_time != null" >
+        #{publish_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null" >
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="article_content != null" >
+        #{article_content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mypro.model.Article" >
+    update article
+    <set >
+      <if test="article_name != null" >
+        article_name = #{article_name,jdbcType=VARCHAR},
+      </if>
+      <if test="article_img != null" >
+        article_img = #{article_img,jdbcType=VARCHAR},
+      </if>
+      <if test="comment_id != null" >
+        comment_id = #{comment_id,jdbcType=INTEGER},
+      </if>
+      <if test="brow_num != null" >
+        brow_num = #{brow_num,jdbcType=INTEGER},
+      </if>
+      <if test="author_id != null" >
+        author_id = #{author_id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="publish_time != null" >
+        publish_time = #{publish_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null" >
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="article_content != null" >
+        article_content = #{article_content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mypro.model.Article" >
+    update article
+    set article_name = #{article_name,jdbcType=VARCHAR},
+      article_img = #{article_img,jdbcType=VARCHAR},
+      comment_id = #{comment_id,jdbcType=INTEGER},
+      brow_num = #{brow_num,jdbcType=INTEGER},
+      author_id = #{author_id,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      publish_time = #{publish_time,jdbcType=TIMESTAMP},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      article_content = #{article_content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mypro.model.Article" >
+    update article
+    set article_name = #{article_name,jdbcType=VARCHAR},
+      article_img = #{article_img,jdbcType=VARCHAR},
+      comment_id = #{comment_id,jdbcType=INTEGER},
+      brow_num = #{brow_num,jdbcType=INTEGER},
+      author_id = #{author_id,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      publish_time = #{publish_time,jdbcType=TIMESTAMP},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
