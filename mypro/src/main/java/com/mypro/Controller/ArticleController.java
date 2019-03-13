@@ -27,12 +27,12 @@ public class ArticleController {
 
     @ResponseBody
     @RequestMapping(value="/upload-img", method=RequestMethod.POST)
-    public String doUploadFile(@RequestParam("file") MultipartFile data,
+    public String doUploadFile(@RequestParam("file") MultipartFile file,
                                HttpServletRequest request){
         String path="";
-        if(!data.isEmpty()){
+        if(!file.isEmpty()){
             try {
-                path= FileUtils.uploadFile(data,"artical-img",request);
+                path= FileUtils.uploadFile(file,"artical-img",request);
             } catch (IOException e) {
                 e.printStackTrace();
             }
