@@ -37,7 +37,7 @@ function apiAxios (method, url, params, success) {
     params = filterNull(params)
   };
   var token=JSON.parse(localStorage.getItem("user")).token,
-   account=JSON.parse(localStorage.getItem("user")).account;
+    account=JSON.parse(localStorage.getItem("user")).account;
   axios({
     method: method,
     url: url,
@@ -84,20 +84,48 @@ function apiAxiosNotoken (method, url, params, success) {
     })
 }
   function uploadFileApi(url,data,success) {
-    this.$http.post(url, data, {
-      headers: {
+    var token=JSON.parse(localStorage.getItem("user")).token,
+      account=JSON.parse(localStorage.getItem("user")).account;
+    var config={
+      headers:{
+        'account':account,
+        'token':token,
         'Content-Type': 'multipart/form-data'
-      }
+      },
+      baseURL: root,
+      withCredentials: false
+    }
+    debugger;
+    console.log(data.get("file"));
+    axios.post(url,data,config).then(function (res) {
+      success(res.data)
     })
-      .then(function (res) {
-        success(res.data)
-      })
       .catch(function (err) {
         let res = err.response
         if (err) {
           console.log('api error, HTTP CODE: ' + res.status)
         }
-      })
+      });
+    // axios({
+    //   method: 'post',
+    //   url: url,
+    //   headers:{
+    //     'account':account,
+    //     'token':token,
+    //     'Content-Type': 'multipart/form-data'
+    //   },
+    //   data: data,
+    //   baseURL: root,
+    //   withCredentials: false
+    // }).then(function (res) {
+    //     success(res.data)
+    //   })
+    //   .catch(function (err) {
+    //     let res = err.response
+    //     if (err) {
+    //       console.log('api error, HTTP CODE: ' + res.status)
+    //     }
+    //   })
   }
 // 返回在vue模板中的调用接口
 export default {

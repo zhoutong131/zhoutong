@@ -4,9 +4,13 @@ import Vue from 'vue'
 import App from './App'
 // import router from './router'
 import $ from 'jquery'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.css'
+import 'summernote'
+import 'summernote/dist/lang/summernote-zh-CN'
+import 'summernote/dist/summernote'
+import 'summernote/dist/summernote.css'
 import 'layui-layer/dist/layer.js'
 import Vuex from 'vuex'
 import store from './vuex/store'
@@ -15,7 +19,6 @@ Vue.use(Vuex)
 import { Swipe, SwipeItem } from 'vue-swipe'  // 加这里
 Vue.component('swipe', Swipe)  // 加这里
 Vue.component('swipe-item', SwipeItem) // 加这里
-
 
 // 引用API文件
 import api from './assets/js/api.js'
