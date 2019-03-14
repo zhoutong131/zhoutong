@@ -8,18 +8,18 @@
           </div>
         </div>
         <div class="row first_row1">
-          <upload :uploadType="'img'" imgWidth="180px" imgHeight="120px"></upload>
+          <upload :uploadType="'img'" imgWidth="180px" imgHeight="120px" @upload="getImgUrl"></upload>
         </div>
         <div class="row second_row">
           <div class="form-group">
             <div class="col-md-2 col-sm-3 pd_t"><span>文章内容：</span><i style="color:red;">*</i></div>
             <div class="col-md-10 col-sm-9">
-              <div id="summernote" ></div>
+              <div id="summernote"  ></div>
             </div>
           </div>
         </div>
       <div class="row">
-        <button class="btn btn-success">提交文章</button>
+        <button  @click="submit" class="btn btn-success">提交文章</button>
       </div>
 
     </div>
@@ -37,24 +37,49 @@
       data(){
         return{
           article_title:'',
-          content:''
+          article_img:''
         }
       },
       methods:{
-
+        getImgUrl:function(data){
+          this.article_img=data;
+        },
+        submit:function () {
+          let content=$('#summernote').summernote('code');
+          let author_id=JSON.parse(localStorage.getItem("user")).id;
+          let self=this;
+          console.log(this.article_img);
+          debugger;
+          let data={
+            author_id:author_id,
+            article_name:this.article_title,
+            article_img:this.article_img,
+            article_content:content,
+          }
+          self.$api.post("/article/add-article",data,function (res) {
+            if(res.code==1)
+            {
+              layer.msg("成功发布文章！");
+              self.$goRoute("/");
+            }
+            else {layer.msg("发布失败！")}
+          })
+        }
       },
       mounted() {
         $('#summernote').summernote({
           lang: 'zh-CN',
           placeholder: '请输入内容',
-          height: 400,
+          height: 500,
           htmlMode: true,
           toolbar: [
             ['style', ['bold', 'italic', 'underline', 'clear']],
             ['fontsize', ['fontsize']],
             ['fontname', ['fontname']],
             ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
+            // ['para', ['ul', 'ol', 'paragraph']],
+            // $('#summernote').summernote('justifyLeft');
+            ['para', ['ul', 'ol', 'paragraph', 'lineheight']],//对齐方式
             ['insert', ['link', 'picture']],
             ['fullscreen',['fullscreen']], //全屏
 
@@ -93,6 +118,7 @@
             }
           }
         })
+        $('#summernote').summernote('justifyLeft');
       }
 
     }

@@ -1,5 +1,5 @@
 // 配置API接口地址
-var root = 'http://localhost:9090/mypro/'
+const root = 'http://localhost:9090/mypro/'
 // 引用axios
 var axios = require('axios')
 // 自定义判断元素类型JS
@@ -51,12 +51,22 @@ function apiAxios (method, url, params, success) {
     withCredentials: false
   })
     .then(function (res) {
+      if(res.data.code=='1005'){
+        layer.alert("身份信息已过期，请重新登录！");
+        this.$goRoute("/");
+        return false;
+      }
       success(res.data)
     })
     .catch(function (err) {
+      if(err.response==undefined)
+      {
+        console.error(err.message);//打印错误信息，
+        return false;
+      }
       let res = err.response
-      if (err) {
-        console.log('api error, HTTP CODE: ' + res.status)
+      if (res) {
+        console.error('api error, HTTP CODE: ' + res.status)
       }
     })
 }
@@ -76,17 +86,21 @@ function apiAxiosNotoken (method, url, params, success) {
           success(res.data)
     })
     .catch(function (err) {
+      if(err.response==undefined)
+      {
+        console.error(err.message);//打印错误信息，
+        return false;
+      }
       let res = err.response
       if (err) {
-        debugger;
-        console.log('api error, HTTP CODE: ' + res.status)
+        console.error('api error, HTTP CODE: ' + res.status)
       }
     })
 }
   function uploadFileApi(url,data,success) {
     var token=JSON.parse(localStorage.getItem("user")).token,
       account=JSON.parse(localStorage.getItem("user")).account;
-    var config={
+    let config={
       headers:{
         'account':account,
         'token':token,
@@ -95,15 +109,24 @@ function apiAxiosNotoken (method, url, params, success) {
       baseURL: root,
       withCredentials: false
     }
-    debugger;
-    console.log(data.get("file"));
     axios.post(url,data,config).then(function (res) {
-      success(res.data)
+      if(res.data.code=='1005'){
+        layer.alert("身份信息已过期，请重新登录！");
+        this.$goRoute("/");
+        return false;
+      }
+      success(res.data);
+
     })
       .catch(function (err) {
+        if(err.response==undefined)
+        {
+          console.error(err.message);//打印错误信息，
+          return false;
+        }
         let res = err.response
         if (err) {
-          console.log('api error, HTTP CODE: ' + res.status)
+          console.error('api error, HTTP CODE: ' + res.status)
         }
       });
     // axios({
@@ -129,6 +152,7 @@ function apiAxiosNotoken (method, url, params, success) {
   }
 // 返回在vue模板中的调用接口
 export default {
+  root,
   get: function (url, params, success) {
     return apiAxios('GET', url, params, success)
   },

@@ -5,4 +5,6 @@ import com.mypro.model.Article;
 public interface ArticleService {
 
     String addActicle(Article article);
+
+    String getArticals();
 }

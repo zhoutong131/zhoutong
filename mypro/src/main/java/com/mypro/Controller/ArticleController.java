@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/article")
@@ -23,6 +24,12 @@ public class ArticleController {
     @RequestMapping(value = "/add-article",method = {RequestMethod.POST})
     public String addArticle(@RequestBody Article article){
         return articleService.addActicle(article);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/five-article",method = {RequestMethod.GET})
+    public String getArticalList(){
+        return articleService.getArticals();
     }
 
     @ResponseBody

@@ -8,13 +8,17 @@
           <div class="article">
             <h2>最新文章</h2>
           </div>
-          <div class="article_content">
-            <figure class="article_img">
+          <div class="article_content" v-for="item in articles">
+            <figure class="article_img" v-if="item.article_img==1">
               <img src="../../static/imgs/a.jpg"/>
             </figure>
+            <figure  v-else class="article_img" >
+              <img :src="$api.root+item.article_img"/>
+            </figure>
             <div class="article_right">
-              <h3><router-link to="list">文章标题</router-link></h3>
-              <p>文章内容,jhsdahdiuashduiashduashduisaaaaaaaaaaaaaaaaaaaadusa</p>
+              <h3><router-link :to="{path:'/article-detail',params:item}">{{item.article_name}}</router-link></h3>
+              <div style="clear: both"></div>
+              <div class="content_class">{{transfer(item.article_content)}}</div>
             </div>
             <div style="clear: both"></div>
             <div class="article_foot">
@@ -46,15 +50,45 @@
     components:{
       navHeader:header,
       nBanner:banner
+    },
+    data(){
+      return{
+        articles:[],
+        xx:'121'
+      }
+    },
+    methods:{
+      transfer:function (content) {
+        let div=document.createElement('div');
+        div.innerHTML=content;
+        let res=div.innerText||div.textContent;
+        return res;
+      }
+    },
+    created() {
+      let self=this;
+      self.$api.get("/article/five-article",null,function (res) {
+        if(res.code==1){
+          self.articles=res.data;
+        }
+      })
     }
   }
 </script>
 
 <style scoped>
+
    #content{
      width: 80%;
      margin: 0 auto;
   }
+   .content_class{
+     display: -webkit-box;
+     -webkit-box-orient: vertical;
+     -webkit-line-clamp: 3;
+     overflow: hidden;
+     line-height: 36px;
+   }
    .leftContent{
      width: 60%;
      float: left;
@@ -65,7 +99,8 @@
    .article_content{
      width: 100%;
      height: 180px;
-     margin: 20px 0;
+     margin-top: 20px;
+     margin-bottom: 60px;
    }
    .article_img{
      width: 30%;

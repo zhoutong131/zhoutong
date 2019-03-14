@@ -10,7 +10,7 @@
   <div v-else-if="uploadType=='img'" class="avatar mt-20"  >
     <div class="col-md-3 col-sm-3">
       <div id="selectimg">
-        <input type="file" class="input-file img-upload" name="avatar" ref="avatarInput"  @change="changeImage($event)" accept="image/gif,image/jpeg,image/jpg,image/png">
+        <input v-show="flag" type="file" class="input-file img-upload" name="avatar" ref="avatarInput"  @change="changeImage($event)" accept="image/gif,image/jpeg,image/jpg,image/png">
         <button class="btn btn-default btn-select-img"> 选择图片</button>
       </div>
     </div>
@@ -28,14 +28,14 @@
 </template>
 
 <script>
-  import api from "../assets/js/api";
   export default {
     name: 'upload',
     data(){
       return{
         avatar: '',
         file: '',
-        showBg: false
+        showBg: false,
+        flag:true
       }
     },
     props: ["uploadType", "imgUrl", "imgWidth", "imgHeight"],
@@ -47,7 +47,6 @@
         let file = e.target.files[0];
         if(file) {
           this.file = file
-          console.log(this.file)
           let reader = new FileReader()
           let that = this
           reader.readAsDataURL(file)
@@ -69,10 +68,12 @@
         let data = new FormData()
         data.append('file', fileData)
         data.append('operaType', this.uploadType)
-        debugger;
-        api.uploadFile("/article/upload-img",data,function (res) {
-          alert("nihao");
-          console.log(res.data);
+        var self=this;
+        self.$api.uploadFile("/article/upload-img",data,function (res) {
+          layer.msg("图片上传成功！");
+          self.file=false;//把确认上传按钮隐藏。
+          self.flag=false;//不能选择图片
+          self.$emit("upload", res.data );//把上传图片相对地址传递给父组件
         })
         // this.$store.dispatch('UPLOAD_HEAD', data)
         //   .then(res => {
