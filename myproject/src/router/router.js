@@ -4,6 +4,8 @@ import list from '../pages/list'
 import emtion from '../pages/Emoticon'
 import myarticle from '../pages/myarticle'
 import articleDetail from '../pages/articleDetail'
+import userCenter from '../pages/userCenter'
+import commodity from '../pages/commodity'
 //路由规则设置
 export default [
   {
@@ -39,6 +41,20 @@ export default [
     component:articleDetail,
     meta:{
       requireAuth:true
+    }
+  },
+  {
+    path:'/user-center',
+    component:userCenter,
+    meta:{
+      requireAuth:false
+    }
+  },
+  {
+    path:'/commodity',
+    component:commodity,
+    meta:{
+      requireAuth:false
     }
   }
 

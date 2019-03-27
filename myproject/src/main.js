@@ -53,6 +53,7 @@ Vue.prototype.$goRoute=function (index) {
 //   methods:{
 //   }
 // })
+
 const app = new Vue({
   router: router,
   store,
@@ -67,6 +68,7 @@ const app = new Vue({
     this.$store.commit('isLogin',localStorage.getItem("loginStatus"));
     this.$store.commit('newName',localStorage.getItem("nickName"));
   }
+
 }).$mount('#app') ;
 
 router.beforeEach((to, from, next) => {

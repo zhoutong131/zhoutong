@@ -1,6 +1,6 @@
 <template>
     <div id="indexpage">
-      <navHeader></navHeader>
+      <!--<navHeader></navHeader>-->
       <nBanner></nBanner>
       <div style="clear: both"></div>
       <div id="content">
@@ -43,12 +43,12 @@
 </template>
 
 <script>
-  import header from '../components/publicHead'
+  // import header from '../components/publicHead'
   import banner from '../components/Banner'
   export default {
     name: "index",
     components:{
-      navHeader:header,
+      // navHeader:header,
       nBanner:banner
     },
     data(){

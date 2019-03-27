@@ -1,6 +1,6 @@
 <template>
   <div id="emtion">
-    <navHeader></navHeader>
+    <!--<navHeader></navHeader>-->
     <div id="content">
       <div class="container-fluid">
         <ul class="col-sm-12 col-xs-12">
@@ -14,11 +14,11 @@
 
 <script>
   import api from "../assets/js/api";
-  import header from '../components/publicHead'
+  // import header from '../components/publicHead'
     export default {
         name: "Emoticon",
         components:{
-        navHeader:header
+        // navHeader:header
       },
       data(){
           return{

@@ -1,6 +1,6 @@
 <template>
     <div id="article_page">
-      <navHeader></navHeader>
+      <!--<navHeader></navHeader>-->
         <div class="row first_row1">
           <div class="form-group">
             <div class="col-md-3 col-sm-3 pd_t"><span>文章标题：</span><i style="color:red;">*</i></div>
@@ -26,12 +26,12 @@
 </template>
 
 <script>
-  import header from '../components/publicHead'
+  // import header from '../components/publicHead'
   import upload from '../components/upload'
     export default {
       name: "article_page",
       components:{
-        navHeader:header,
+        // navHeader:header,
         upload,
       },
       data(){

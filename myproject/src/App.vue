@@ -1,12 +1,15 @@
 <template>
   <div id="app">
+    <pubHead></pubHead>
     <router-view/>
   </div>
 </template>
 
 <script>
+  import pubHead from './components/publicHead'
 export default {
   name: 'App',
+  components:{pubHead}
 }
 </script>
 

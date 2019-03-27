@@ -5,7 +5,7 @@
         <li><img class="login-icon" src="/static/imgs/login-icon.png"/></li>
         <li class="login-name"><a >{{this.$store.state.nickName.toString()}}</a><i class="fa fa-angle-down"></i>
           <ul class="user-info">
-            <li><router-link to="list">个人中心</router-link></li>
+            <li><router-link to="user-center">个人中心</router-link></li>
             <li><router-link to="myarticle">写文章</router-link></li>
             <li><a style="cursor: pointer;" @click="logout()">注销</a></li>
           </ul>
@@ -32,8 +32,8 @@
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><router-link to="/">首页</router-link></li>
-              <li class="dropdown"><router-link to="emtion">表情包</router-link>
+              <li @click="selected($event)" class="active"><router-link to="/">首页</router-link></li>
+              <li @click="selected($event)"  class="dropdown"><router-link to="/commodity">二手商品</router-link>
 
                 <!--<ul role="menu" class="sub-menu">-->
                 <!--<li><a href="aboutus.html">About</a></li>-->
@@ -46,7 +46,7 @@
                 <!--<li><a href="coming-soon.html">Coming Soon</a></li>-->
                 <!--</ul>-->
               </li>
-              <li class="dropdown"><a href="#">各种神段</a>
+              <li @click="selected($event)" class="dropdown"><a href="#">各种神段</a>
                 <!--<ul role="menu" class="sub-menu">-->
                 <!--<li><a href="blog.html">Blog Default</a></li>-->
                 <!--<li><a href="blogtwo.html">Timeline Blog</a></li>-->
@@ -56,7 +56,7 @@
                 <!--<li><a href="blogdetails.html">Blog Details</a></li>-->
                 <!--</ul>-->
               </li>
-              <li class="dropdown"><a href="#">没想好干什么</a><!--Portfolio <i class="fa fa-angle-down"></i>-->
+              <li @click="selected($event)"  class="dropdown"><a href="#">没想好干什么</a><!--Portfolio <i class="fa fa-angle-down"></i>-->
                 <!--<ul role="menu" class="sub-menu">-->
                 <!--<li><a href="portfolio.html">Portfolio Default</a></li>-->
                 <!--<li><a href="portfoliofour.html">Isotope 3 Columns + Right Sidebar</a></li>-->
@@ -66,7 +66,7 @@
                 <!--<li><a href="portfolio-details.html">Portfolio Details</a></li>-->
                 <!--</ul>-->
               </li>
-              <li><a href="#">个人中心</a></li>
+              <li @click="selected($event)" ><router-link to="user-center">个人中心</router-link></li>
             </ul>
           </div>
           <!--<div class="search">-->
@@ -337,9 +337,18 @@
         openregister:function () {
           $("#LoginModal").modal('hide');
           $("#registernModal").modal('show');
+        },
+        selected:function (e) {
+          let dom=e.currentTarget;
+          $(dom).addClass("active");
+          $(".nav li").each(function (i,item) {
+            if(item!=dom) {
+              $(item).removeClass("active");
+              $(item).addClass("dropdown");
+            }
+          })
         }
       }
-
     }
 
 </script>
