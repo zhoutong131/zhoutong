@@ -35,6 +35,7 @@ import routes from './router/router'
 // 使用配置文件规则
 const router = new VueRouter({
   mode: 'history',
+  // mode:'hash',
   base: __dirname,
   routes: routes });
 

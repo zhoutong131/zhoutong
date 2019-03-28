@@ -10,6 +10,8 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
+    // assetsPublicPath: './',
+    // build配置
     proxyTable: {},
 
     // Various Dev Server settings
