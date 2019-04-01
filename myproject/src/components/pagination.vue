@@ -1,11 +1,14 @@
 <template>
   <nav>
+    <div class="blank"></div>
     <ul class="pagination">
       <li :class="{'disabled': current == 1}"><a href="javascript:;" @click="setCurrent(current - 1)"> « </a></li>
       <li :class="{'disabled': current == 1}"><a href="javascript:;" @click="setCurrent(1)"> 首页 </a></li>
       <li v-for="p in grouplist" :class="{'active': current == p.val}"><a href="javascript:;"
                                                                           @click="setCurrent(p.val)"> {{ p.text }} </a>
       </li>
+      <li></li>
+      <li :class="{'disabled': current == page}"><input type="number" :placeholder="'共'+page+'页'" class="form-control topage" v-model="topage"><a href="javascript:;" @click="setCurrent(Number(topage))"> Go </a></li>
       <li :class="{'disabled': current == page}"><a href="javascript:;" @click="setCurrent(page)"> 尾页 </a></li>
       <li :class="{'disabled': current == page}"><a href="javascript:;" @click="setCurrent(current + 1)"> »</a></li>
     </ul>
@@ -17,7 +20,8 @@
         name: "pagination",
       data(){
           return{
-            current:this.currentPage
+            current:this.currentPage,
+            topage:''
           }
       },
       props:{
@@ -76,9 +80,80 @@
           return list;
         }
       },
+      methods: {
+        setCurrent: function (idx) {
+          if (this.current != idx && idx > 0 && idx < this.page + 1) {
+            this.current = idx;
+            this.$emit('pagechange', this.current);//子组件向父组件pagechange传递参数当前要跳转的页码
+          }
+          this.topage='';
+        }
+      }
     }
 </script>
 
-<style scoped>
+<style lang="less">
+  .blank{
+    height: 80px;
+  }
+  .pagination {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    overflow: hidden;
+    display: table;
+    margin: 0 auto;
+    /*width: 100%;*/
+    height: 50px;
 
+  li {
+    float: left;
+    /*height: 30px;*/
+    border-radius: 5px;
+    margin: 3px;
+    color: #666 !important;
+  &
+  :hover {
+    background: #000 !important;color: #fff !important;
+
+  a {
+    color: #fff !important;
+  }
+  }
+  a {
+    display: block;
+    width: 40px;
+    height: 34px;
+    text-align: center;
+    line-height: 34px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    background: none;
+    color:#000;
+    padding: 0 !important;
+  }
+    .topage{
+      display: block;
+      float: left;
+      width: 100px;
+      height: 34px;
+      margin-right: 10px;
+      border-radius: 5px;
+      background: none !important;
+      outline: none;
+      color: #000 !important;
+    }
+  }
+  .active {
+    background: #000 !important;
+
+  a {
+    color: #fff !important;
+    background: none !important;
+    border-color: #000 !important;
+  }
+
+  }
+  }
 </style>

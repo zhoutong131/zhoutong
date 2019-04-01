@@ -10,10 +10,14 @@ com\mypro\Service\Impl\ArticleServiceImpl.class
 com\mypro\mapper\EmtionTypeMapper.class
 com\mypro\util\CommonUtils$1.class
 com\mypro\util\ResultJson.class
+com\mypro\mapper\GoodsMapper.class
 com\mypro\util\PageBean.class
+com\mypro\Controller\GoodsController.class
 com\mypro\mapper\ArticleMapper.class
+com\mypro\model\Goods.class
 com\mypro\Service\EmotionTypeService.class
 com\mypro\model\VO\EmotionTypeVO.class
+com\mypro\Service\GoodsService.class
 com\mypro\model\VO\UserVO.class
 com\mypro\util\CommonUtils.class
 com\mypro\model\EmtionType.class
@@ -21,6 +25,7 @@ com\mypro\util\JWT.class
 com\mypro\model\VO\Login.class
 com\mypro\Service\ArticleService.class
 com\mypro\Controller\ArticleController.class
+com\mypro\Service\Impl\GoodsServiceImpl.class
 com\mypro\Controller\EmotionTypeController.class
 com\mypro\model\User.class
 com\mypro\util\PageBeanVO.class

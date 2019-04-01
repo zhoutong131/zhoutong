@@ -84,7 +84,9 @@
   }
    .content_class{
      display: -webkit-box;
+     /*! autoprefixer: off */
      -webkit-box-orient: vertical;
+     /* autoprefixer: on */
      -webkit-line-clamp: 3;
      overflow: hidden;
      line-height: 36px;

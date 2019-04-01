@@ -3,39 +3,71 @@
       <i class="icon-search fa fa-search"></i><input type="text" class="search form-control"><button class="mr-20 btn btn-default"> 查找</button>
       <div class="line-style"></div>
       <div class="row">
-        <div class="goods-item col-lg-3 col-md-5 col-sm-5">
-          <img src="../../static/imgs/a.jpg" >
-          <span class="price"><i class="fa fa-cny"></i>288</span>
-          <router-link class="goods-name" to="goods-detail">阿姐家 情侣装2018夏装新款一字领短袖雪纺衫上衣鱼尾半身裙套装</router-link>
+        <div v-for="good in goods" class="goods-item col-lg-3 col-md-5 col-sm-5">
+          <img :src="$api.root+good.goods_img" />
+          <div class="goods-head">
+            <span class="price"><i class="fa fa-cny"></i>{{good.goods_price}}</span><span class="right-stock">库存：{{good.stock}}</span>
+          </div>
+          <router-link class="goods-name" to="goods-detail">{{good.goods_name}}</router-link>
         </div>
-        <div class="goods-item col-lg-3 col-md-5 col-sm-5">
-          <img src="../../static/imgs/a.jpg" >
-          <span class="price"><i class="fa fa-cny"></i>288</span>
-          <router-link class="goods-name" to="goods-detail">阿姐家 情侣装2018夏装新款一字领短袖雪纺衫上衣鱼尾半身裙套装</router-link>
-        </div>
-        <div class="goods-item col-lg-3 col-md-5 col-sm-5">
-          <img src="../../static/imgs/a.jpg" >
-          <span class="price"><i class="fa fa-cny"></i>288</span>
-          <router-link class="goods-name" to="goods-detail">阿姐家 情侣装2018夏装新款一字领短袖雪纺衫上衣鱼尾半身裙套装</router-link>
-        </div>
-        <div class="goods-item col-lg-3 col-md-5 col-sm-5">
-          <img src="../../static/imgs/a.jpg" >
-          <span class="price"><i class="fa fa-cny"></i>288</span>
-          <router-link class="goods-name" to="goods-detail">阿姐家 情侣装2018夏装新款一字领短袖雪纺衫上衣鱼尾半身裙套装</router-link>
-        </div>
-        <div class="goods-item col-lg-3 col-md-5 col-sm-5">
-          <img src="../../static/imgs/a.jpg" >
-          <span class="price"><i class="fa fa-cny"></i>288</span>
-          <router-link class="goods-name" to="goods-detail">阿姐家 情侣装2018夏装新款一字领短袖雪纺衫上衣鱼尾半身裙套装</router-link>
-        </div>
-
       </div>
+      <pagination :total="total" :display="pageSize" :current-page='current' @pagechange="pagechange"></pagination>
     </div>
 </template>
 
 <script>
+  import pagination from '../components/pagination';
     export default {
       name: "commodity",
+      data(){
+        return{
+          total:0,
+          current:1,
+          pageSize:6,
+          goods:[]
+        }
+      },
+      components:{pagination},
+      methods:{
+        pagechange:function (current1) {
+          let self=this;
+          let config={
+            pageNo:current1+"",
+            pageSize: '3'
+          }
+          this.$api.post('/goods/list',config,function (res) {
+            if(res.code!=1){
+              layer.msg("无商品展示！")
+            }
+            else{
+              debugger;
+              self.goods=res.data.list;
+            }
+          });
+        }
+      },
+      beforeCreate() {
+        let self=this;
+        let config={
+          pageNo:'1',
+          pageSize: '3'
+        }
+        this.$api.post('/goods/list',config,function (res) {
+          if(res.code!=1){
+            layer.msg("无商品展示！")
+          }
+          else{
+            if(res.code!=1){
+              layer.msg("无商品展示！")
+            }
+            else{
+              debugger;
+              self.goods=res.data.list;
+              self.total=res.data.total;
+            }
+          }
+        });
+      }
     }
 </script>
 
@@ -46,7 +78,9 @@
   text-align: left;
   position: relative;
 }
-.price{display: block;margin:10px;font-size: 20px;color:#00aeef;font-weight: bold}
+.goods-head{margin-top: 10px;}
+.price{margin:10px;font-size: 20px;color:#00aeef;font-weight: bold}
+.right-stock{float:right;padding-top: 4px;}
 .mr-20{margin-left: 20px;}
 .icon-search{
   position: absolute;
@@ -76,10 +110,15 @@
     height:240px;
   }
   .goods-name{
+    text-align: center;
+    color:#00aeef;
+    margin-top: 10px;
     overflow: hidden;
     text-overflow:ellipsis;
     display: -webkit-box;
+    /*! autoprefixer: off */
     -webkit-box-orient: vertical;
+    /* autoprefixer: on */
     -webkit-line-clamp: 2;
   }
 

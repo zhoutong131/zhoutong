@@ -1,7 +1,33 @@
 // 配置API接口地址
 const root = 'http://localhost:9090/mypro/'
+// const root = 'http://182.61.181.194:80/mypro/'
 // 引用axios
-var axios = require('axios')
+// var axios = require('axios');
+import axios from 'axios';
+// 超时时间
+axios.defaults.timeout = 15000;
+// axios.defaults.withCredentials=true;
+// http请求拦截器
+let loadFlag='';
+axios.interceptors.request.use(config => {
+  loadFlag = layer.load(0, {shade: 0.3});
+  return config
+}, error => {
+  setTimeout(() => {
+    layer.close(loadFlag);
+  },3000)
+  return Promise.reject(error)
+})
+// http响应拦截器
+axios.interceptors.response.use(data => {// 响应成功关闭loading
+  layer.close(loadFlag);
+  return data
+}, error => {
+  setTimeout(() => {
+    layer.close(loadFlag);
+  },1000)
+  return Promise.reject(error)
+})
 // 自定义判断元素类型JS
 function toType (obj) {
   return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()

@@ -19,7 +19,6 @@ public class EmotionTypeController {
     @ResponseBody
     @RequestMapping(value = "/list",method = {RequestMethod.POST})
     public String getEmotionTypelist(){
-
         return emotionTypeService.getListBypage();
     }
 

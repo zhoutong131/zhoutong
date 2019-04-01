@@ -6,6 +6,7 @@ import myarticle from '../pages/myarticle'
 import articleDetail from '../pages/articleDetail'
 import userCenter from '../pages/userCenter'
 import commodity from '../pages/commodity'
+import newGood from '../pages/newGood';
 //路由规则设置
 export default [
   {
@@ -53,6 +54,13 @@ export default [
   {
     path:'/commodity',
     component:commodity,
+    meta:{
+      requireAuth:false
+    }
+  },
+  {
+    path:'/newGood',
+    component:newGood,
     meta:{
       requireAuth:false
     }

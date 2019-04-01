@@ -7,6 +7,7 @@
           <ul class="user-info">
             <li><router-link to="user-center">个人中心</router-link></li>
             <li><router-link to="myarticle">写文章</router-link></li>
+            <li><router-link to="newGood">添加商品</router-link></li>
             <li><a style="cursor: pointer;" @click="logout()">注销</a></li>
           </ul>
         </li>
@@ -189,6 +190,7 @@
   import api from "../assets/js/api";
     export default {
       name: "publicHead",
+      inject:['reload'],
       data () {
         return {
           registeraccount:'',
@@ -316,11 +318,11 @@
           };
           api.postFornoToken("/user/login",data,function (result) {
             if(result.code==1){
-              console.log(result.data.token);
               headself.$store.commit('isLogin',"1");
               headself.$store.commit('newName',result.data.nick_name);
               localStorage.setItem("user",JSON.stringify(result.data));
               $("#LoginModal").modal('hide');
+              headself.reload();
             }
             else
               layer.alert("登录失败，账号或密码错误！",{
@@ -332,7 +334,7 @@
         logout:function () {
           this.$store.commit('isLogin',"0");
           localStorage.clear();
-          this.$router.go(0)
+          this.reload();
         },
         openregister:function () {
           $("#LoginModal").modal('hide');
