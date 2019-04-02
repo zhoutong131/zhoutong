@@ -4,7 +4,7 @@ Vue.use(Vuex)
 const store= new Vuex.Store({
   state:{
     nickName:'',
-    loginStatus:0
+    loginStatus:0,
   },
   mutations:{
     newName(state,msg){

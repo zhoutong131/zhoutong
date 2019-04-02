@@ -3,7 +3,7 @@ import index from '../pages/index'
 import list from '../pages/list'
 import emtion from '../pages/Emoticon'
 import myarticle from '../pages/myarticle'
-import articleDetail from '../pages/articleDetail'
+import goodDetail from '../pages/goodDetail'
 import userCenter from '../pages/userCenter'
 import commodity from '../pages/commodity'
 import newGood from '../pages/newGood';
@@ -12,6 +12,7 @@ export default [
   {
     path: '/',
     component: index,
+    name:'index',
     meta: {
       requireAuth: false // 添加该字段，表示进入这个路由是需要登录的
     }
@@ -19,6 +20,7 @@ export default [
   {
     path: '/list',
     component: list,
+    name:'list',
     meta: {
       requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
     }
@@ -26,6 +28,7 @@ export default [
   {
     path: '/emtion',
     component: emtion,
+    name:'emtion',
     meta: {
       requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
     }
@@ -33,13 +36,15 @@ export default [
   {
     path: '/myarticle',
     component: myarticle,
+    name:'myarticle',
     meta: {
       requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
     }
   },
   {
-    path:'/article-detail',
-    component:articleDetail,
+    path:'/good-detail',
+    component:goodDetail,
+    name:'goodDetail',
     meta:{
       requireAuth:true
     }
@@ -47,6 +52,7 @@ export default [
   {
     path:'/user-center',
     component:userCenter,
+    name:'userCenter',
     meta:{
       requireAuth:false
     }
@@ -54,6 +60,7 @@ export default [
   {
     path:'/commodity',
     component:commodity,
+    name:'commodity',
     meta:{
       requireAuth:false
     }
@@ -61,6 +68,7 @@ export default [
   {
     path:'/newGood',
     component:newGood,
+    name:'newGood',
     meta:{
       requireAuth:false
     }

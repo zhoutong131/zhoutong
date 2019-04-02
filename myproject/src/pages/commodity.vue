@@ -1,14 +1,14 @@
 <template>
-    <div id="goods" class="col-lg-7 col-md-9 col-sm-10">
-      <i class="icon-search fa fa-search"></i><input type="text" class="search form-control"><button class="mr-20 btn btn-default"> 查找</button>
+    <div id="goods" class="col-lg-8 col-md-9 col-sm-10">
+      <i class="icon-search fa fa-search"></i><input type="text" class="search form-control" @keyup.enter="search" v-model="keyword" placeholder="请输入商品名称或者描述"><button @click="search" class="mr-20 btn btn-default"> 查找</button>
       <div class="line-style"></div>
-      <div class="row">
-        <div v-for="good in goods" class="goods-item col-lg-3 col-md-5 col-sm-5">
-          <img :src="$api.root+good.goods_img" />
+      <div class="row max-hei">
+        <div v-for="good in goods"  class="goods-item col-lg-3 col-md-5 col-sm-5">
+          <img @click="toDetail(good)" :src="$api.root+good.goods_img" />
           <div class="goods-head">
             <span class="price"><i class="fa fa-cny"></i>{{good.goods_price}}</span><span class="right-stock">库存：{{good.stock}}</span>
           </div>
-          <router-link class="goods-name" to="goods-detail">{{good.goods_name}}</router-link>
+          <a class="goods-name" @click="toDetail(good)">{{good.goods_name}}</a>
         </div>
       </div>
       <pagination :total="total" :display="pageSize" :current-page='current' @pagechange="pagechange"></pagination>
@@ -21,36 +21,43 @@
       name: "commodity",
       data(){
         return{
-          total:0,
+          total:4,
           current:1,
           pageSize:6,
-          goods:[]
+          goods:[],
+          keyword:''
         }
       },
       components:{pagination},
       methods:{
+        toDetail:function(good){
+          this.$router.push({name:'goodDetail', params: good})
+        },
+        search:function(){
+          this.pagechange(1);
+        },
         pagechange:function (current1) {
           let self=this;
           let config={
             pageNo:current1+"",
-            pageSize: '3'
+            pageSize: self.pageSize+"",
+            keyword:self.keyword
           }
           this.$api.post('/goods/list',config,function (res) {
             if(res.code!=1){
               layer.msg("无商品展示！")
             }
             else{
-              debugger;
               self.goods=res.data.list;
             }
           });
         }
       },
-      beforeCreate() {
+      created() {
         let self=this;
         let config={
           pageNo:'1',
-          pageSize: '3'
+          pageSize: self.pageSize+""
         }
         this.$api.post('/goods/list',config,function (res) {
           if(res.code!=1){
@@ -61,7 +68,6 @@
               layer.msg("无商品展示！")
             }
             else{
-              debugger;
               self.goods=res.data.list;
               self.total=res.data.total;
             }
@@ -72,6 +78,9 @@
 </script>
 
 <style scoped>
+  .max-hei{
+    min-height: 710px;
+  }
 #goods{
   float: none;
   margin: 0 auto;
@@ -110,6 +119,7 @@
     height:240px;
   }
   .goods-name{
+    font-size:18px;
     text-align: center;
     color:#00aeef;
     margin-top: 10px;

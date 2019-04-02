@@ -16,10 +16,10 @@
   <sql id="Base_Column_List">
     id, goods_name, goods_desc, goods_price, goods_img, stock, status, create_time, update_time
   </sql>
-  <select id="getGoodsList" resultMap="BaseResultMap">
+  <select id="getGoodsList" resultMap="BaseResultMap" parameterType="java.lang.String">
     select
     <include refid="Base_Column_List" />
-    from goods where status=1
+    from goods where (goods_name like CONCAT('%',#{_parameter},'%') or goods_desc like CONCAT('%',#{_parameter},'%')) AND status=1
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 

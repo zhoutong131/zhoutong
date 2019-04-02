@@ -60,7 +60,7 @@
             if(res.code==1)
             {
               layer.msg("成功发布文章！");
-              self.$goRoute("/");
+              self.$goRoute("/commodity");
             }
             else {layer.msg("发布失败！")}
           })

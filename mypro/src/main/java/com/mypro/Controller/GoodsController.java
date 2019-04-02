@@ -24,9 +24,7 @@ public class GoodsController {
     @ResponseBody
     @RequestMapping(value = "/list",method = {RequestMethod.POST})
     public String getGoodslist(@RequestBody Map data){
-        Integer pageNo=Integer.parseInt(data.get("pageNo").toString());
-        Integer pageSize=Integer.parseInt(data.get("pageSize").toString());
-        return goodsService.getGoodsList(pageNo,pageSize);
+        return goodsService.getGoodsList(data);
     }
 
     @ResponseBody

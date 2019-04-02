@@ -334,7 +334,7 @@
         logout:function () {
           this.$store.commit('isLogin',"0");
           localStorage.clear();
-          this.reload();
+          this.$goRoute('/');
         },
         openregister:function () {
           $("#LoginModal").modal('hide');

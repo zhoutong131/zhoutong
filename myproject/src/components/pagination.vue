@@ -93,16 +93,14 @@
 </script>
 
 <style lang="less">
-  .blank{
-    height: 80px;
-  }
+  /*.blank{*/
+    /*height: 80px;*/
+  /*}*/
   .pagination {
-    position: absolute;
-    left: 0;
-    bottom: 10px;
+    /**/
     overflow: hidden;
     display: table;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
     /*width: 100%;*/
     height: 50px;
 

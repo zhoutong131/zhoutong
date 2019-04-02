@@ -67,11 +67,6 @@ function apiAxios (method, url, params, success) {
     token=JSON.parse(localStorage.getItem("user")).token,
       account=JSON.parse(localStorage.getItem("user")).account;
   }
-  else{
-    layer.alert("请先登录！");
-    return false;
-  }
-
   axios({
     method: method,
     url: url,

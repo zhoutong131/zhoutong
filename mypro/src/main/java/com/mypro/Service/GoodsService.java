@@ -2,8 +2,10 @@ package com.mypro.Service;
 
 import com.mypro.model.Goods;
 
+import java.util.Map;
+
 public interface GoodsService {
-    String getGoodsList(Integer pageNo,Integer pageSize);
+    String getGoodsList(Map data);
 
     String addGood(Goods good);
 }

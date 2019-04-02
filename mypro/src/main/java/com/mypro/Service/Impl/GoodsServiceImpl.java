@@ -13,15 +13,21 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Service("goodsService")
 public class GoodsServiceImpl implements GoodsService {
     @Resource
     private GoodsMapper goodsMapper;
     @Override
-    public String getGoodsList(Integer pageNo,Integer pageSize) {
+    public String getGoodsList(Map data) {
+        Integer pageNo=Integer.parseInt(data.get("pageNo").toString()),
+                pageSize=Integer.parseInt(data.get("pageSize").toString());
+        String keyWord="";
+        if(data.get("keyword")!=null)
+            keyWord=data.get("keyword").toString();
         PageHelper.startPage(pageNo,pageSize);
-        List<Goods> goodslist=goodsMapper.getGoodsList();
+        List<Goods> goodslist=goodsMapper.getGoodsList(keyWord);
         if(goodslist!=null&&goodslist.size()>0){
             PageInfo<Goods> pageInfo= new PageInfo<Goods>(goodslist);
             return ResultJson.toJson(Code.SUCCESS,Code.FIND_SUCC_MSG,pageInfo);

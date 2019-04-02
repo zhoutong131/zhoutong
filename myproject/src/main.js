@@ -25,6 +25,8 @@ import api from './assets/js/api.js'
 // 将API方法绑定到全局
 Vue.prototype.$api = api
 Vue.config.productionTip = false
+//定义一个全局Bus来传递参数。
+Vue.prototype.eventBus=new Vue();
 
 // 引用路由插件
 import VueRouter from 'vue-router'

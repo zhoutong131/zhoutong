@@ -17,5 +17,5 @@ public interface GoodsMapper {
 
     int updateByPrimaryKey(Goods record);
 
-    List<Goods> getGoodsList();
+    List<Goods> getGoodsList(String keyword);
 }
