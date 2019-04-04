@@ -1,6 +1,6 @@
 // 配置API接口地址
-const root = 'http://localhost:9090/mypro/'
-// const root = 'http://182.61.181.194:80/mypro/'
+// const root = 'http://localhost:9090/mypro/'
+const root = 'http://182.61.181.194:80/mypro/'
 // 引用axios
 // var axios = require('axios');
 import axios from 'axios';

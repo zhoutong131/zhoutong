@@ -1,6 +1,6 @@
 <template>
   <div id="head">
-    <div id="nav_login">
+    <div id="nav_login" class="mobile-login ">
       <ul v-if="this.$store.state.loginStatus.toString()==1?true:false" class="right-ban">
         <li><img class="login-icon" src="/static/imgs/login-icon.png"/></li>
         <li class="login-name"><a >{{this.$store.state.nickName.toString()}}</a><i class="fa fa-angle-down"></i>
@@ -18,7 +18,7 @@
         <li><a style="cursor: pointer" @click="openregister()">注册</a></li>
       </ul>
     </div>
-    <header id="header">
+    <header id="header" class="mobile-logo">
       <div class="navbar navbar-inverse" role="banner">
         <div class="container">
           <div class="navbar-header">
@@ -26,7 +26,7 @@
               <h1 style="float:left"><img src="/static/imgs/logo.png" alt="logo"></h1>
               <div class="logo-title" @click="$goRoute('/')">
                 <h2>梧桐树</h2>
-                <h3>www.wutongshu.com</h3>
+                <h3>www.zhoutong.online</h3>
               </div>
             </a>
 
@@ -551,5 +551,9 @@
   .btn-position{
     margin: 30px;
     width: 100px;
+  }
+  @media screen and (max-width: 960px){
+    .mobile-login{display: none}
+    .mobile-logo{width: 100%;height: 1rem}
   }
 </style>
