@@ -6,7 +6,8 @@ import myarticle from '../pages/myarticle'
 import goodDetail from '../pages/goodDetail'
 import userCenter from '../pages/userCenter'
 import commodity from '../pages/commodity'
-import newGood from '../pages/newGood';
+import newGood from '../pages/newGood'
+import articleDetail from '../pages/articleDetail'
 //路由规则设置
 export default [
   {
@@ -71,6 +72,14 @@ export default [
     name:'newGood',
     meta:{
       requireAuth:false
+    }
+  },
+  {
+    path:'/article-detail',
+    component:articleDetail,
+    name:'articleDetail',
+    meta:{
+      requireAuth:true
     }
   }
 

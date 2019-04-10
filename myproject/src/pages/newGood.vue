@@ -1,6 +1,6 @@
 <template>
     <div id="newGood">
-      <div class="row oneline col-lg-8 col-md-10 col-sm-11">
+      <div class="row oneline  col-md-10 col-sm-11">
         <div class="form-group col-md-6 col-sm-6">
           <div class="col-md-4 col-sm-4 pd_t"><span>商品名：</span><i style="color:red;">*</i></div>
           <div class="col-md-8 col-sm-8"><input type="text" class="form-control" v-model="good_name"></div>

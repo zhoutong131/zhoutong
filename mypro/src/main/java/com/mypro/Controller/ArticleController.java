@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/article")
@@ -30,6 +31,19 @@ public class ArticleController {
     @RequestMapping(value = "/five-article",method = {RequestMethod.GET})
     public String getArticalList(){
         return articleService.getArticals();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/list",method = {RequestMethod.POST})
+    public String getArticlelist(@RequestBody Map data){
+        return articleService.getArticalList(data);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/article-detail",method = {RequestMethod.GET})
+    public String getArticle(@RequestBody Map data){
+        Integer aid=Integer.parseInt(data.get("articalId").toString());
+        return articleService.getarticleById(aid);
     }
 
     @ResponseBody

@@ -47,7 +47,7 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table tableName="goods" domainObjectName="Goods"
+        <table tableName="comment" domainObjectName="Comment"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"

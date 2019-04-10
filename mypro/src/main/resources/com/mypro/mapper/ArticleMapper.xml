@@ -13,16 +13,38 @@
     <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
     <result column="update_time" property="update_time" jdbcType="TIMESTAMP" />
   </resultMap>
+  <resultMap id="NewResultMap" type="com.mypro.model.Article" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="article_name" property="article_name" jdbcType="VARCHAR" />
+    <result column="article_img" property="article_img" jdbcType="VARCHAR" />
+    <result column="comment_id" property="comment_id" jdbcType="INTEGER" />
+    <result column="comment_num" property="comment_num" jdbcType="INTEGER" />
+    <result column="brow_num" property="brow_num" jdbcType="INTEGER" />
+    <result column="author_id" property="author_id" jdbcType="INTEGER" />
+    <result column="author_name" property="author_name" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="publish_time" property="publish_time" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="update_time" jdbcType="TIMESTAMP" />
+  </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.mypro.model.Article" extends="BaseResultMap" >
+    <result column="article_content" property="article_content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <resultMap id="newResultMapWithBLOBs" type="com.mypro.model.Article" extends="NewResultMap" >
     <result column="article_content" property="article_content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, article_name, article_img, comment_id, brow_num, author_id, status, publish_time, 
     create_time, update_time
   </sql>
+  <sql id="new_Column_List">
+    A.id, A.article_name, A.article_img, A.comment_id, A.brow_num, A.author_id,B.nick_name as author_name, A.status, A.publish_time,
+    A.create_time, A.update_time
+  </sql>
   <sql id="Blob_Column_List" >
     article_content
   </sql>
+
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -31,10 +53,22 @@
     from article
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="getDetailById" resultMap="newResultMapWithBLOBs" parameterType="java.lang.Integer">
+    select
+    <include refid="new_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from article
+    where id = #{id,jdbcType=INTEGER}
+  </select>
 
-  <select id="getfiveList" resultMap="BaseResultMap" >
-    select  <include refid="Base_Column_List" /> ,
-    <include refid="Blob_Column_List" /> from article order by publish_time desc limit 0,5
+  <select id="getfiveList" resultMap="newResultMapWithBLOBs" >
+    select  <include refid="new_Column_List" /> ,
+    <include refid="Blob_Column_List" />,(SELECT count(*) FROM comment WHERE article_id=A.id) as comment_num  from article A Left JOIN user B on A.author_id=B.id order by A.publish_time desc limit 0,5
+  </select>
+  <select id="getArticallist" parameterType="java.lang.String" resultMap="newResultMapWithBLOBs">
+    select  <include refid="new_Column_List" /> ,
+    <include refid="Blob_Column_List" />,(SELECT count(*) FROM comment WHERE article_id=A.id) as comment_num  from article A Left JOIN user B on A.author_id=B.id where (A.article_name like CONCAT('%',#{_parameter},'%') order by A.publish_time desc
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from article

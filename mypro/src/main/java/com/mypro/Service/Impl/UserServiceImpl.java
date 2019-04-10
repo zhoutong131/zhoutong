@@ -75,6 +75,9 @@ public class UserServiceImpl implements UserService {
             return ResultJson.toJson(Code.FAILED,"账号重复！",Code.NULL_STR);
         }
         else{
+            Integer s2=userMapper.countEmail(user.getEmail());
+            if(s2>0)
+                return ResultJson.toJson(Code.FAILED,"邮箱重复！",Code.NULL_STR);
             user.setPoint(0);
             user.setStatus(Code.ONE);
             user.setUpdate_time(new Date());

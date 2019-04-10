@@ -1,11 +1,12 @@
 // 配置API接口地址
-// const root = 'http://localhost:9090/mypro/'
-const root = 'http://182.61.181.194:80/mypro/'
+const root = 'http://localhost:9090/mypro/'
+// const root = 'http://www.zhoutong.online/mypro/'
+// const root = 'http://www.zhoutong.online/mypro/'
 // 引用axios
 // var axios = require('axios');
 import axios from 'axios';
 // 超时时间
-axios.defaults.timeout = 15000;
+axios.defaults.timeout = 150000;
 // axios.defaults.withCredentials=true;
 // http请求拦截器
 let loadFlag='';

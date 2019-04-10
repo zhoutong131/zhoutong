@@ -1,5 +1,5 @@
 <template>
-  <swipe class="my-swipe" :options="swiperOption">
+  <swipe class="my-swipe  col-md-10 col-sm-11" :options="swiperOption">
     <swipe-item class="slide1">1</swipe-item>
     <swipe-item class="slide2">2</swipe-item>
     <swipe-item class="slide3">3</swipe-item>
@@ -12,6 +12,7 @@
         name: "Banner",
       data () {
         return {
+
           swiperOption:{
             direction:'vertical',
             speed:3000,
@@ -33,7 +34,7 @@
   /*//注意:不要加scoped,会污染样式，导航的小圆点就不显示了*/
   @import 'vue-swipe/dist/vue-swipe.css';
   .my-swipe {
-    width: 80%;
+    float: none;
     margin: 0 auto;
     height: 500px;
     /*color: #fff;*/
@@ -58,5 +59,8 @@
   .slide4 {
     background:url("/static/imgs/banner4.jpg") no-repeat ;
     background-size: 100% 100%;
+  }
+  @media screen and (max-width: 600px){
+    .my-swipe{width: 100%;height:6rem}
   }
 </style>

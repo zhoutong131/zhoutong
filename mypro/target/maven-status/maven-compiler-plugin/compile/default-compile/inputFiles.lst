@@ -1,3 +1,4 @@
+D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\model\VO\ArticleVO.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\mapper\UserMapper.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\Controller\GoodsController.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\mapper\GoodsMapper.java
@@ -10,6 +11,7 @@ D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\Service\Impl\GoodsSer
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\Service\EmotionTypeService.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\util\Code.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\mapper\EmtionTypeMapper.java
+D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\Service\Impl\CommentServiceImpl.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\Controller\EmotionTypeController.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\Service\Impl\ArticleServiceImpl.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\model\VO\Login.java
@@ -17,13 +19,18 @@ D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\Service\Impl\EmotionT
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\util\TokenInterceptor.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\model\VO\EmotionTypeVO.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\Service\ArticleService.java
+D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\model\Comment.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\util\MyCorsFilter.java
+D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\mapper\CommentMapper.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\model\User.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\util\ResultJson.java
+D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\model\CommentKey.java
+D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\Controller\CommentController.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\util\CommonUtils.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\Service\Impl\UserServiceImpl.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\model\Article.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\model\Goods.java
+D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\Service\CommentService.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\mapper\ArticleMapper.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\model\EmtionType.java
 D:\workplace\mywork\zhoutong\mypro\src\main\java\com\mypro\util\JWT.java

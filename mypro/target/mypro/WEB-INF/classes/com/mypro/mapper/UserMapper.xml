@@ -25,6 +25,10 @@
     select count(*) from user
     where account = #{_parameter,jdbcType=VARCHAR}
   </select>
+  <select id="countEmail" resultType="java.lang.Integer" parameterType="java.lang.String">
+  select count(*) from user
+    where email = #{_parameter,jdbcType=VARCHAR}
+  </select>
   <select id="getUserDetail" parameterType="com.mypro.model.User" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

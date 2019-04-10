@@ -20,7 +20,7 @@
     </div>
     <header id="header" class="mobile-logo">
       <div class="navbar navbar-inverse" role="banner">
-        <div class="container">
+        <div class="mynav-header  col-md-10 col-sm-11">
           <div class="navbar-header">
             <a class="navbar-brand"  href="#">
               <h1 style="float:left"><img src="/static/imgs/logo.png" alt="logo"></h1>
@@ -31,56 +31,21 @@
             </a>
 
           </div>
-          <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li @click="selected($event)" class="active"><router-link to="/">首页</router-link></li>
-              <li @click="selected($event)"  class="dropdown"><router-link to="/commodity">二手商品</router-link>
-
-                <!--<ul role="menu" class="sub-menu">-->
-                <!--<li><a href="aboutus.html">About</a></li>-->
-                <!--<li><a href="aboutus2.html">About 2</a></li>-->
-                <!--<li><a href="service.html">Services</a></li>-->
-                <!--<li><a href="pricing.html">Pricing</a></li>-->
-                <!--<li><a href="contact.html">Contact us</a></li>-->
-                <!--<li><a href="contact2.html">Contact us 2</a></li>-->
-                <!--<li><a href="404.html">404 error</a></li>-->
-                <!--<li><a href="coming-soon.html">Coming Soon</a></li>-->
-                <!--</ul>-->
-              </li>
-              <li @click="selected($event)" class="dropdown"><a href="#">各种神段</a>
-                <!--<ul role="menu" class="sub-menu">-->
-                <!--<li><a href="blog.html">Blog Default</a></li>-->
-                <!--<li><a href="blogtwo.html">Timeline Blog</a></li>-->
-                <!--<li><a href="blogone.html">2 Columns + Right Sidebar</a></li>-->
-                <!--<li><a href="blogthree.html">1 Column + Left Sidebar</a></li>-->
-                <!--<li><a href="blogfour.html">Blog Masonary</a></li>-->
-                <!--<li><a href="blogdetails.html">Blog Details</a></li>-->
-                <!--</ul>-->
-              </li>
-              <li @click="selected($event)"  class="dropdown"><a href="#">没想好干什么</a><!--Portfolio <i class="fa fa-angle-down"></i>-->
-                <!--<ul role="menu" class="sub-menu">-->
-                <!--<li><a href="portfolio.html">Portfolio Default</a></li>-->
-                <!--<li><a href="portfoliofour.html">Isotope 3 Columns + Right Sidebar</a></li>-->
-                <!--<li><a href="portfolioone.html">3 Columns + Right Sidebar</a></li>-->
-                <!--<li><a href="portfoliotwo.html">3 Columns + Left Sidebar</a></li>-->
-                <!--<li><a href="portfoliothree.html">2 Columns</a></li>-->
-                <!--<li><a href="portfolio-details.html">Portfolio Details</a></li>-->
-                <!--</ul>-->
-              </li>
-              <li @click="selected($event)" ><router-link to="user-center">个人中心</router-link></li>
-            </ul>
-          </div>
-          <!--<div class="search">-->
-          <!--<form role="form">-->
-          <!--<i class="fa fa-search" @click="toggleInput()"></i>-->
-          <!--<div class="field-toggle">-->
-          <!--<input type="text" class="search-form" autocomplete="off" placeholder="Search">-->
-          <!--</div>-->
-          <!--</form>-->
-          <!--</div>-->
+          <ul class="myNavigation">
+            <li><router-link to="/">首页</router-link></li>
+            <li><router-link to="/commodity">二手商品</router-link></li>
+            <li><router-link to="/user-center">个人中心</router-link></li>
+            <li><router-link to="/user-center">我的文章</router-link></li>
+          </ul>
         </div>
       </div>
     </header>
+    <ul class="mobile-navigation">
+      <li><router-link to="/">首页</router-link></li>
+      <li><router-link to="/commodity">二手商品</router-link></li>
+      <li><router-link to="/user-center">我的文章</router-link></li>
+      <li><router-link to="/user-center">个人中心</router-link></li>
+    </ul>
     <!-- 模态框（Modal） -->
     <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
       <div class="modal-dialog">
@@ -233,7 +198,7 @@
             });
             return false;
           }
-          if(!(this.registerpassword.length>=1&&this.registerpassword.length<=10))
+          if(!(this.registerpassword.length>=6&&this.registerpassword.length<=18))
           {
             layer.alert("密码6-18位！",{
               icon:0
@@ -259,7 +224,8 @@
             });
             this.verificationCode="";
             $("#getCode").attr("disabled",false);
-            $("#getCode").text("重新发送")
+            $("#getCode").text("重新发送");
+            return false;
           };
           var data={
             account:this.registeraccount,
@@ -356,6 +322,9 @@
 </script>
 
 <style scoped>
+  #head{font-size: 14px;}
+  .mynav-header{float:none;margin: 0 auto}
+  .mynav-header:after{display: block;content: '';clear: both;}
   .login-name:hover>ul.user-info{
     display: block;
     -webkit-animation: fadeInUp 400ms;
@@ -430,7 +399,7 @@
     padding: 0;
   }
   #header{
-    padding: 50px 0 60px 0;
+    padding: 50px 0 30px 0;
   }
   #header .navbar {
     background: #fff;
@@ -460,6 +429,11 @@
     text-transform: uppercase;
     font-weight: 300;
   }
+  ul.mobile-navigation{display: none}
+  ul.myNavigation{margin: 0 auto;float: left;}
+  ul.myNavigation li{list-style: none;float: left;font-size: 18px;padding: 16px 24px;margin-top: 20px;}
+  ul.myNavigation li a{color: #000;text-decoration: none}
+  ul.myNavigation li a:hover{border-bottom: 3px solid #00aeef}
   @media only screen and (min-width: 768px){
     ul.sub-menu {
       position: absolute;
@@ -552,8 +526,17 @@
     margin: 30px;
     width: 100px;
   }
-  @media screen and (max-width: 960px){
+  @media screen and (max-width: 600px){
     .mobile-login{display: none}
-    .mobile-logo{width: 100%;height: 1rem}
+    .mobile-logo{width: 100%;height:2.4rem; padding:0.4rem 0 0 0.8rem !important;}
+    ul.myNavigation{display: none}
+    ul.mobile-navigation{display:block;padding: 0; padding-left: 0.1rem;}
+    ul.mobile-navigation:after{display: block;content: '';clear: both}
+    ul.mobile-navigation li{list-style: none;float:left;padding: 0.2rem 0.3rem;}
+    ul.mobile-navigation li:hover{border-bottom: 2px solid #1397dc;}
+    ul.mobile-navigation li a{font-size: 16px;color: #000;text-decoration: none}
+    .logo-title h2{font-size: 0.8rem}
+    .logo-title h3{font-size: 0.6rem}
+
   }
 </style>

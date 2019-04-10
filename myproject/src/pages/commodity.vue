@@ -1,5 +1,5 @@
 <template>
-    <div id="goods" class="col-lg-8 col-md-9 col-sm-10">
+    <div id="goods" class=" col-md-10 col-sm-11">
       <i class="icon-search fa fa-search"></i><input type="text" class="search form-control" @keyup.enter="search" v-model="keyword" placeholder="请输入商品名称或者描述"><button @click="search" class="mr-20 btn btn-default"> 查找</button>
       <div class="line-style"></div>
       <div class="row max-hei">
@@ -104,6 +104,7 @@
   }
 .line-style{margin-top:20px;width: 100%;border-bottom: 1px solid #00aeef;}
   .goods-item{
+    width: 320px;
     border: 1px solid transparent;
     /*加一个相同大小的透明边框，使hover效果的边框出现后里面的内容不会出现偏移*/
     margin: 10px 20px;

@@ -11,9 +11,13 @@ public class Article {
 
     private Integer comment_id;
 
+    private Integer comment_num;
+
     private Integer brow_num;
 
     private Integer author_id;
+
+    private String author_name;
 
     private Byte status;
 
@@ -111,5 +115,21 @@ public class Article {
 
     public void setArticle_content(String article_content) {
         this.article_content = article_content == null ? null : article_content.trim();
+    }
+
+    public Integer getComment_num() {
+        return comment_num;
+    }
+
+    public void setComment_num(Integer comment_num) {
+        this.comment_num = comment_num;
+    }
+
+    public String getAuthor_name() {
+        return author_name;
+    }
+
+    public void setAuthor_name(String author_name) {
+        this.author_name = author_name;
     }
 }

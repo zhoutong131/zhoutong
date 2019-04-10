@@ -3,39 +3,41 @@
       <!--<navHeader></navHeader>-->
       <nBanner></nBanner>
       <div style="clear: both"></div>
-      <div id="content">
+      <div id="content" class=" col-md-10 col-sm-11">
         <div class="leftContent">
           <div class="article">
             <h2>最新文章</h2>
           </div>
           <div class="article_content" v-for="item in articles">
-            <figure class="article_img" v-if="item.article_img==1">
+            <figure class="article_img" v-if="item.article_img==1" @click="$router.push({name:'articleDetail',query:{articalId:item.id}})">
               <img src="../../static/imgs/a.jpg"/>
             </figure>
             <figure  v-else class="article_img" >
-              <img :src="$api.root+item.article_img"/>
+              <img :src="$api.root+item.article_img" @click="$router.push({name:'articleDetail',query:{articalId:item.id}})"/>
             </figure>
             <div class="article_right">
-              <h3><router-link :to="{path:'/article-detail',params:item}">{{item.article_name}}</router-link></h3>
+              <h3><router-link :to="{path:'/article-detail',query:{acticalId:item.id}}">{{item.article_name}}</router-link></h3>
               <div style="clear: both"></div>
               <div class="content_class">{{transfer(item.article_content)}}</div>
             </div>
             <div style="clear: both"></div>
             <div class="article_foot">
-              <span class="foot_line"><i class="fa fa-bookmark-o"></i> 周童 </span>
+              <span class="foot_line"><i class="fa fa-bookmark-o"></i> XXX </span>
               <span class="foot_line"><i class="fa fa-clock-o"></i>2019-03-11 </span>
               <span class="foot_line"><i class="fa fa-commenting-o"></i>评论（10） </span>
               <span class="foot_line"><i class="fa fa-eye"></i>浏览（189） </span>
             </div>
           </div>
+          <router-link class="more-info" to="ariticals">更多文章>></router-link>
         </div>
         <div class="search">
           <h2>关于我</h2>
-          <p>2017年毕业，软件技术专业。姓名：周童</p>
+          <p>2017年毕业，软件技术专业。姓名：XX</p>
           <h2>联系我</h2>
           <img src="../../static/imgs/wechat.png" alt="我本人的微信二维码"/>
         </div>
       </div>
+
       <div id="foot">本站内容来自互联网，如有侵权请联系本人（右上角留言）删除！</div>
 
       </div>
@@ -77,9 +79,10 @@
 </script>
 
 <style scoped>
-
+#indexpage{font-size: 14px;}
    #content{
-     width: 80%;
+     /*width: 80%;*/
+     float: none;
      margin: 0 auto;
   }
    .content_class{
@@ -125,9 +128,9 @@
      text-align: left;
    }
    .article_foot .foot_line{
-     margin: 0 2%;
+     margin: 0 5px;
    }
-   .article_foot .foot_line i{margin-right: 10px}
+   .article_foot .foot_line i{margin-right: 5px}
    .article_right h3{
      margin: 0 0 10px 0;
      font-size: 16px;
@@ -163,5 +166,31 @@
     background: url("/static/imgs/grass.png");
     background-size: 100% 100%;
   }
+   @media screen and (max-width: 600px){
+     h2 h3{font-size: 0.9rem}
+     p{font-size: 0.4rem}
+     #content{
+       width: 9rem;
+       margin: 0 auto;
+     }
+     .leftContent{
+       width: 9rem;
+     }
+     .article h2 {
+       text-align: left;
+       font-size: 0.7rem;
+     }
+     .article_content{width: 9rem;height:5.2rem;margin-bottom: 0 }
+     .article_img{width: 4rem; height: 4.2rem}
+     .article_img img{ width: 4rem; height: 4.2rem}
+     .article_right{width: 4.4rem;margin-left: 0.3rem}
+     .article_right h3{font-size: 0.5rem;margin-top: 0.3rem;display: -webkit-box; /*! autoprefixer: off */-webkit-box-orient: vertical; /* autoprefixer: on */-webkit-line-clamp: 1;overflow: hidden;}
+     .article_foot{width:9rem;margin-top:0.4rem;font-size: 0.36rem}
+     .article_foot .foot_line{margin:0 0.03rem}
+     .article_foot .foot_line i{margin-right: 0.1rem}
+     .more-info{font-size: 0.45rem;display: block;margin-top: 0.3rem;}
+     .content_class{font-size: 0.4rem;line-height: 0.8rem}
+     .search{width: 9rem;margin: 0 auto;text-align: center;}
+   }
 
 </style>

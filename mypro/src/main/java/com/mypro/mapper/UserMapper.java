@@ -11,6 +11,8 @@ public interface UserMapper {
 
     Integer countSum(String account);
 
+    Integer countEmail(String email);
+
     User selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(User record);
