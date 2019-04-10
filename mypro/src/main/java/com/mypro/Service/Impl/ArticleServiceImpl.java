@@ -68,6 +68,8 @@ public class ArticleServiceImpl implements ArticleService {
     public String getarticleById(Integer aid) {
         Article article=articleMapper.getDetailById(aid);
         if(article!=null){
+            article.setBrow_num(article.getBrow_num()+1);
+            articleMapper.updateByPrimaryKeySelective(article);
             return ResultJson.toJson(Code.SUCCESS,Code.FIND_SUCC_MSG,new ArticleVO(article));
         }
         return ResultJson.toJson(Code.FAILED,Code.FIND_FAIL_MSG,Code.NULL_STR);

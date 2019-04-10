@@ -16,16 +16,16 @@
               <img :src="$api.root+item.article_img" @click="$router.push({name:'articleDetail',query:{articalId:item.id}})"/>
             </figure>
             <div class="article_right">
-              <h3><router-link :to="{path:'/article-detail',query:{acticalId:item.id}}">{{item.article_name}}</router-link></h3>
+              <h3><router-link :to="{path:'/article-detail',query:{articalId:item.id}}">{{item.article_name}}</router-link></h3>
               <div style="clear: both"></div>
               <div class="content_class">{{transfer(item.article_content)}}</div>
             </div>
             <div style="clear: both"></div>
             <div class="article_foot">
-              <span class="foot_line"><i class="fa fa-bookmark-o"></i> XXX </span>
-              <span class="foot_line"><i class="fa fa-clock-o"></i>2019-03-11 </span>
-              <span class="foot_line"><i class="fa fa-commenting-o"></i>评论（10） </span>
-              <span class="foot_line"><i class="fa fa-eye"></i>浏览（189） </span>
+              <span class="foot_line"><i class="fa fa-bookmark-o"></i> {{item.author_name}} </span>
+              <span class="foot_line"><i class="fa fa-clock-o"></i>{{item.publish_time}}</span>
+              <span class="foot_line"><i class="fa fa-commenting-o"></i>评论（{{item.comment_num}}） </span>
+              <span class="foot_line"><i class="fa fa-eye"></i>浏览（{{item.brow_num}}） </span>
             </div>
           </div>
           <router-link class="more-info" to="ariticals">更多文章>></router-link>

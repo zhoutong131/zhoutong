@@ -58,8 +58,8 @@
     <include refid="new_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from article
-    where id = #{id,jdbcType=INTEGER}
+    ,(SELECT count(*) FROM comment WHERE article_id=A.id) as comment_num  from article A Left JOIN user B on A.author_id=B.id
+    where A.id = #{id,jdbcType=INTEGER}
   </select>
 
   <select id="getfiveList" resultMap="newResultMapWithBLOBs" >

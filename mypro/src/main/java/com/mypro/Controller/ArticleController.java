@@ -36,14 +36,14 @@ public class ArticleController {
     @ResponseBody
     @RequestMapping(value = "/list",method = {RequestMethod.POST})
     public String getArticlelist(@RequestBody Map data){
+
         return articleService.getArticalList(data);
     }
 
     @ResponseBody
     @RequestMapping(value = "/article-detail",method = {RequestMethod.GET})
-    public String getArticle(@RequestBody Map data){
-        Integer aid=Integer.parseInt(data.get("articalId").toString());
-        return articleService.getarticleById(aid);
+    public String getArticle(@RequestParam(required = true) Integer articalId){
+        return articleService.getarticleById(articalId);
     }
 
     @ResponseBody
