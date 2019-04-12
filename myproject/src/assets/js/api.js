@@ -1,6 +1,6 @@
 // 配置API接口地址
-const root = 'http://localhost:9090/mypro/'
-// const root = 'http://www.zhoutong.online/mypro/'
+// const root = 'http://localhost:9090/mypro/'
+const root = 'http://www.zhoutong.online/mypro/'
 // const root = 'http://www.zhoutong.online/mypro/'
 // 引用axios
 // var axios = require('axios');
@@ -81,11 +81,6 @@ function apiAxios (method, url, params, success) {
     withCredentials: false
   })
     .then(function (res) {
-      if(res.data.code=='1005'){
-        layer.alert("身份信息已过期，请重新登录！");
-        this.$goRoute("/");
-        return false;
-      }
       success(res.data)
     })
     .catch(function (err) {
@@ -140,11 +135,6 @@ function apiAxiosNotoken (method, url, params, success) {
       withCredentials: false
     }
     axios.post(url,data,config).then(function (res) {
-      if(res.data.code=='1005'){
-        layer.alert("身份信息已过期，请重新登录！");
-        this.$goRoute("/");
-        return false;
-      }
       success(res.data);
 
     })

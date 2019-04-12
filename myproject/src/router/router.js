@@ -8,6 +8,7 @@ import userCenter from '../pages/userCenter'
 import commodity from '../pages/commodity'
 import newGood from '../pages/newGood'
 import articleDetail from '../pages/articleDetail'
+import goBang from '../pages/goBang'
 //路由规则设置
 export default [
   {
@@ -78,6 +79,14 @@ export default [
     path:'/article-detail',
     component:articleDetail,
     name:'articleDetail',
+    meta:{
+      requireAuth:true
+    }
+  },
+  {
+    path:'/goBang',
+    component:goBang,
+    name:'goBang',
     meta:{
       requireAuth:true
     }
