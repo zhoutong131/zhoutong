@@ -46,7 +46,7 @@
       <li><router-link to="/commodity">二手商品</router-link></li>
       <li><router-link to="/user-center">我的文章</router-link></li>
       <li><router-link to="/user-center">个人中心</router-link></li>
-      <li><router-link to="/user-center">五子棋</router-link></li>
+      <li><router-link to="/goBang">五子棋</router-link></li>
     </ul>
     <!-- 模态框（Modal） -->
     <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">

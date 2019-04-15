@@ -8,21 +8,8 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/mypro/Service/Impl/UserServiceImpl.java" line="32" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6412ebf9-3c1f-4991-8cb5-195757ad1388" name="Default" comment="后端配置">
-      <change afterPath="$PROJECT_DIR$/../myproject/src/pages/goBang.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myproject/static/imgs/black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myproject/static/imgs/book_bak.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myproject/static/imgs/book_mark.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myproject/static/imgs/chessboard.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myproject/static/imgs/white.png" afterDir="false" />
+    <list default="true" id="6412ebf9-3c1f-4991-8cb5-195757ad1388" name="Default" comment="4.12">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/mypro.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/mypro.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myproject/src/assets/js/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../myproject/src/assets/js/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myproject/src/components/publicHead.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../myproject/src/components/publicHead.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myproject/src/pages/articleDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../myproject/src/pages/articleDetail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myproject/src/router/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/../myproject/src/router/router.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -362,7 +349,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554902173284" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555073668783" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -528,7 +515,7 @@
       <workItem from="1554898289078" duration="2542000" />
       <workItem from="1554901637153" duration="701000" />
       <workItem from="1554965416471" duration="1711000" />
-      <workItem from="1555043290280" duration="709000" />
+      <workItem from="1555043290280" duration="759000" />
     </task>
     <task id="LOCAL-00001" summary="Controller微调">
       <created>1552469182848</created>
@@ -565,11 +552,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554901742754</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="4.12">
+      <created>1555073644957</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1555073644957</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210299000" />
+    <option name="totallyTimeSpent" value="210349000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -619,7 +613,8 @@
     <MESSAGE value="前端分页，后台商品。" />
     <MESSAGE value="后端配置 不拦截api" />
     <MESSAGE value="后端配置" />
-    <option name="LAST_COMMIT_MESSAGE" value="后端配置" />
+    <MESSAGE value="4.12" />
+    <option name="LAST_COMMIT_MESSAGE" value="4.12" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

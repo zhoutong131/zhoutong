@@ -24,7 +24,7 @@
       methods:{
 
       },
-      created() {
+      beforeCreate() {
         let articalId=this.$route.query.articalId;
         //获取传过来的id,请求文章详情。
         let self=this;
@@ -33,6 +33,7 @@
           if(res.code==1){self.artical=res.data;}
           else if(res.code=='1005'){
             layer.alert("身份信息已过期，请重新登录！");
+            self.$goRoute("/");
             return false;
           }
         });
