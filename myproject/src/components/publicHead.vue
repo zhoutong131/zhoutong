@@ -532,7 +532,7 @@
     .mobile-login{display: none}
     .mobile-logo{width: 100%;height:2.4rem; padding:0.4rem 0 0 0.8rem !important;}
     ul.myNavigation{display: none}
-    ul.mobile-navigation{display:block;padding: 0; padding-left: 0.1rem;}
+    ul.mobile-navigation{display:flex;padding: 0; padding-left: 0.1rem;white-space: nowrap;}
     ul.mobile-navigation:after{display: block;content: '';clear: both}
     ul.mobile-navigation li{list-style: none;float:left;padding: 0.2rem 0.3rem;}
     ul.mobile-navigation li:hover{border-bottom: 2px solid #1397dc;}
