@@ -1,14 +1,17 @@
 //加载模板文件
-import index from '../pages/index'
-import list from '../pages/list'
-import emtion from '../pages/Emoticon'
-import myarticle from '../pages/myarticle'
-import goodDetail from '../pages/goodDetail'
-import userCenter from '../pages/userCenter'
-import commodity from '../pages/commodity'
-import newGood from '../pages/newGood'
-import articleDetail from '../pages/articleDetail'
-import goBang from '../pages/goBang'
+
+// / /下面2行代码，没有指定webpackChunkName，每个组件打包成一个js文件。
+const index = () => import(/* webpackChunkName: 'index' */'../pages/index')
+const list = () => import(/* webpackChunkName: 'list' */'../pages/list')
+const emtion = () => import(/* webpackChunkName: 'Emoticon' */'../pages/Emoticon')
+const myarticle = () => import(/* webpackChunkName: 'myarticle' */'../pages/myarticle')
+const goodDetail = () => import(/* webpackChunkName: 'goodDetail' */'../pages/goodDetail')
+const userCenter = () => import(/* webpackChunkName: 'userCenter' */'../pages/userCenter')
+const commodity = () => import(/* webpackChunkName: 'commodity' */'../pages/commodity')
+const newGood = () => import(/* webpackChunkName: 'newGood' */'../pages/newGood')
+const articleDetail = () => import(/* webpackChunkName: 'articleDetail' */'../pages/articleDetail')
+const goBang = () => import(/* webpackChunkName: 'goBang' */'../pages/goBang')
+
 //路由规则设置
 export default [
   {
