@@ -223,6 +223,36 @@
       <version>2.2.0</version>
     </dependency>
 
+    <!--钉钉工具包,如缺失请到钉钉服务器开发文档下载-->
+     <dependency>
+         <groupId>com.taobao.top</groupId>
+         <artifactId>top-api-sdk-dev</artifactId>
+         <version>ding-open-mc-SNAPSHOT</version>
+         <scope>system</scope>
+         <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/taobao-sdk-java-auto_1479188381469-20190809-source.jar</systemPath>
+     </dependency>
+
+     <dependency>
+         <groupId>com.taobao.top</groupId>
+         <artifactId>lippi-oapi-encrpt</artifactId>
+         <version>dingtalk-SNAPSHOT</version>
+         <scope>system</scope>
+         <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/taobao-sdk-java-auto_1479188381469-20190809.jar</systemPath>
+     </dependency>
+
+<!--    fastjson-->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.59</version>
+    </dependency>
+
+<!-- Http-->
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.9</version>
+    </dependency>
     <!-- WebSocket 服务器客户端通讯，服务器推送-->
     <dependency>
       <groupId>org.springframework</groupId>
