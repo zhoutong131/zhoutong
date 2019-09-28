@@ -58,7 +58,6 @@ public class ArticleController {
                 e.printStackTrace();
             }
         }
-
         return ResultJson.toJson(Code.SUCCESS,"上传成功！",path);  //上传成功
     }
 }
