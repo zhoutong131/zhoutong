@@ -6,7 +6,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 
 /**
- * @author 马路遥(229010812 @ qq.com)
+ * @author 周童(229010812 @ qq.com)
  * @version V1.0
  * @Title: tp-workflow
  * @Package com.tekniplex.api.model.vo
