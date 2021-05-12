@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "ajv": "^6.0.0",
-    "codemirror": "^5.44.0",
+    "codemirror": "^5.58.2",
     "font-awesome": "^4.7.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
